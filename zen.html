@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>She Is Happy 🐼 — A Celebration</title>
+    <meta name="description"
+        content="A dark, premium celebration website for someone who loves pandas, black, and mountain adventures." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --black: #080808;
+            --dark: #0f0f0f;
+            --dark2: #1a1a1a;
+            --dark3: #252525;
+            --gold: #d4a843;
+            --gold2: #f0c060;
+            --white: #f5f5f5;
+            --grey: #888;
+            --panda-white: #e8e8e8;
+            --accent: #c8a96e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── STAR CANVAS ── */
+        #starCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── PARTICLES ── */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: particleFly linear infinite;
+        }
+
+        @keyframes particleFly {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ── TOAST ── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            color: #000;
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            z-index: 9999;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 40px rgba(212, 168, 67, 0.4);
+            white-space: nowrap;
+        }
+
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2.5rem;
+            background: rgba(8, 8, 8, 0.9);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.4rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--grey);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+            border-color: rgba(212, 168, 67, 0.4);
+            background: rgba(212, 168, 67, 0.08);
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 7rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('h_panda_mtn.jpg') center/cover no-repeat;
+            filter: brightness(0.25) saturate(0.8);
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(8, 8, 8, 0.95) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-crown {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: crownFloat 2s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes crownFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(5deg);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(212, 168, 67, 0.5);
+            border-radius: 30px;
+            padding: 0.4rem 1.4rem;
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: badgePop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform: scale(0.5);
+            background: rgba(212, 168, 67, 0.07);
+        }
+
+        @keyframes badgePop {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            animation: fadeUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-title .gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold2), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 580px;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            animation: fadeUp 1s ease 0.55s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeUp 1s ease 0.75s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            color: #000;
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.35);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 14px 45px rgba(212, 168, 67, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 168, 67, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 1s ease 1s forwards;
+            opacity: 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--grey);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ── SECTION COMMON ── */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title .g {
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 1rem;
+            max-width: 520px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.8;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1rem auto 2.5rem;
+        }
+
+        /* ── PANDA GALLERY ── */
+        #pandas {
+            background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+        }
+
+        .panda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .panda-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(212, 168, 67, 0.15);
+            transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+        }
+
+        .panda-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 168, 67, 0.4);
+            border-color: rgba(212, 168, 67, 0.4);
+        }
+
+        .panda-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+            filter: brightness(0.85);
+        }
+
+        .panda-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .panda-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        .panda-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .panda-card-sub {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .panda-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(212, 168, 67, 0.5);
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* ── PANDA FACTS ── */
+        .panda-facts {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .facts-header {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .facts-carousel {
+            background: var(--dark2);
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        #panda-fact {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            min-height: 64px;
+            transition: opacity 0.3s;
+        }
+
+        .fact-nav {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .fact-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--dark3);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .fact-dot.active {
+            background: var(--gold);
+        }
+
+        /* ── HAPPINESS COUNTER ── */
+        #celebration {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+            text-align: center;
+        }
+
+        .confetti-btn-wrap {
+            margin-top: 2rem;
+        }
+
+        .happiness-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+
+        .happiness-card {
+            background: var(--dark2);
+            border: 1px solid rgba(212, 168, 67, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .happiness-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .happiness-card:hover {
+            border-color: rgba(212, 168, 67, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .hc-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .hc-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+        }
+
+        .hc-label {
+            font-size: 0.8rem;
+            color: var(--grey);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ── ADVENTURE TIMELINE ── */
+        #adventure {
+            background: linear-gradient(180deg, var(--dark2) 0%, var(--dark) 100%);
+        }
+
+        .adventure-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .adv-hero-img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            margin-bottom: 2rem;
+            filter: brightness(0.9);
+            transition: filter 0.4s;
+        }
+
+        .adv-hero-img:hover {
+            filter: brightness(1);
+        }
+
+        .adv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .adv-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(212, 168, 67, 0.15);
+        }
+
+        .adv-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.8);
+            transition: all 0.4s;
+        }
+
+        .adv-card:hover img {
+            filter: brightness(1);
+            transform: scale(1.04);
+        }
+
+        .adv-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.92), transparent);
+        }
+
+        .adv-card-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.2rem;
+        }
+
+        .adv-card-info p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ── ADVENTURE FACTS ── */
+        .adv-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .adv-fact-card {
+            background: var(--dark2);
+            border: 1px solid rgba(212, 168, 67, 0.12);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: all 0.3s;
+        }
+
+        .adv-fact-card:hover {
+            border-color: rgba(212, 168, 67, 0.35);
+            transform: translateY(-4px);
+        }
+
+        .adv-fact-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .adv-fact-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .adv-fact-text strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ── QUOTE WALL ── */
+        #quotes {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%);
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .quote-card {
+            background: var(--dark2);
+            border: 1px solid rgba(212, 168, 67, 0.12);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .quote-card::after {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            font-size: 8rem;
+            font-family: 'Cinzel', serif;
+            color: rgba(212, 168, 67, 0.06);
+            line-height: 1;
+        }
+
+        .quote-card:hover {
+            border-color: rgba(212, 168, 67, 0.35);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .quote-emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .quote-text {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .quote-by {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ── CELEBRATION BURST ── */
+        #burst {
+            background: var(--dark2);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .burst-box {
+            max-width: 620px;
+            margin: 0 auto;
+            background: var(--dark3);
+            border: 1px solid rgba(212, 168, 67, 0.25);
+            border-radius: 32px;
+            padding: 3.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .burst-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
+        }
+
+        .burst-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1.2rem;
+            animation: burstBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes burstBounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-15px) scale(1.1);
+            }
+        }
+
+        .burst-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .burst-sub {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        /* ── CONFETTI ── */
+        .confetti-p {
+            position: fixed;
+            top: -20px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: cFall linear forwards;
+        }
+
+        @keyframes cFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(960deg);
+                opacity: 0;
+            }
+        }
+
+        /* ── MESSAGE ── */
+        #message {
+            background: linear-gradient(135deg, var(--dark2) 0%, var(--dark) 100%);
+            text-align: center;
+            padding-bottom: 7rem;
+        }
+
+        .msg-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: msgPulse 2s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes msgPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(-5deg);
+            }
+        }
+
+        .msg-card {
+            max-width: 720px;
+            margin: 2rem auto 0;
+            background: var(--dark2);
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 28px;
+            padding: 3rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.85);
+            position: relative;
+        }
+
+        .msg-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 28px 28px 0 0;
+        }
+
+        .msg-card p {
+            margin-bottom: 1.2rem;
+        }
+
+        .msg-sign {
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 700;
+            margin-top: 1.5rem;
+        }
+
+        /* ── MUSIC ── */
+        #music {
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%);
+        }
+
+        .music-player-dark {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--dark2);
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 28px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-player-dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .music-cover-dark {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.8rem;
+            filter: brightness(0.8);
+            transition: filter 0.4s;
+        }
+
+        .music-cover-dark:hover {
+            filter: brightness(1);
+        }
+
+        .music-info-dark {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .music-title-dark {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+        }
+
+        .music-sub-dark {
+            color: var(--grey);
+            font-size: 0.9rem;
+            margin-top: 0.4rem;
+            letter-spacing: 1px;
+        }
+
+        .music-notes {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 1.4rem;
+            margin: 0.6rem 0;
+            animation: noteFloat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes noteFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .yt-dark {
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .yt-dark iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .yt-open-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0.6rem auto 1.4rem;
+            text-decoration: none;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.88rem;
+            border: 1.5px solid rgba(212, 168, 67, 0.4);
+            border-radius: 20px;
+            padding: 0.45rem 1.2rem;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
+        .yt-open-btn:hover {
+            background: rgba(212, 168, 67, 0.1);
+            border-color: var(--gold);
+        }
+
+        .music-playlist-dark {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .msd-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .msd-item:hover,
+        .msd-item.active {
+            background: rgba(212, 168, 67, 0.07);
+            border-color: rgba(212, 168, 67, 0.3);
+        }
+
+        .msd-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--dark3), #333);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .msd-name {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 0.92rem;
+        }
+
+        .msd-artist {
+            font-size: 0.8rem;
+            color: var(--grey);
+            margin-top: 0.1rem;
+        }
+
+        .msd-play {
+            margin-left: auto;
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--black);
+            text-align: center;
+            padding: 2.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(212, 168, 67, 0.1);
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width:700px) {
+            .adv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="starCanvas"></canvas>
+    <div id="toast">🐼 Welcome to her world!</div>
+
+    <nav>
+        <div class="nav-logo">🐼 SHE IS HAPPY</div>
+        <ul class="nav-links">
+            <li><a href="#pandas">🐼 Pandas</a></li>
+            <li><a href="#music">🎵 Music</a></li>
+            <li><a href="#celebration">🎉 Celebrate</a></li>
+            <li><a href="#adventure">⛰️ Adventure</a></li>
+            <li><a href="#quotes">✨ Quotes</a></li>
+            <li><a href="#burst">🎊 Burst</a></li>
+            <li><a href="#message">💌 Letter</a></li>
+        </ul>
+    </nav>
+
+    <!-- ══ HERO ══ -->
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-crown">🐼</span>
+            <div class="hero-badge">✦ She Is Happy ✦</div>
+            <h1 class="hero-title">
+                She Is<br /><span class="gold">Unstoppable.</span>
+            </h1>
+            <p class="hero-subtitle">A panda-loving, mountain-climbing, black-wearing adventurer — and today she is
+                radiating
+                pure happiness. This entire world was built to celebrate her. 🌟</p>
+            <div class="hero-btns">
+                <a href="#pandas" class="btn btn-gold">🐼 Meet the Pandas</a>
+                <a href="#adventure" class="btn btn-outline">⛰️ See Adventures</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-num" id="smiles-count">0</span><span class="stat-label">Smiles
+                        Today</span>
+                </div>
+                <div class="stat"><span class="stat-num" id="peaks-count">0</span><span class="stat-label">Peaks
+                        Conquered</span></div>
+                <div class="stat"><span class="stat-num" id="pandas-count">0</span><span class="stat-label">Pandas
+                        Adored</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ PANDAS ══ -->
+    <section id="pandas">
+        <div class="section-label reveal">✦ Her Favourites ✦</div>
+        <h2 class="section-title reveal">The <span class="g">Panda</span> Gallery</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc reveal">Because pandas are basically her spirit animal — fluffy, majestic, and
+            wonderfully
+            unique. 🐼</p>
+
+        <div class="panda-grid">
+            <div class="panda-card reveal">
+                <div class="panda-badge">✦ WILD</div>
+                <img src="h_panda_mtn.jpg" alt="Panda on mountains" />
+                <div class="panda-card-overlay">
+                    <div class="panda-card-title">The Peak Panda</div>
+                    <div class="panda-card-sub">High above the clouds, where she belongs</div>
+                </div>
+            </div>
+            <div class="panda-card reveal">
+                <div class="panda-badge">✦ JOY</div>
+                <img src="h_panda_happy.jpg" alt="Happy panda" />
+                <div class="panda-card-overlay">
+                    <div class="panda-card-title">Just Like Her</div>
+                    <div class="panda-card-sub">Waving at the world with pure happiness</div>
+                </div>
+            </div>
+            <div class="panda-card reveal">
+                <div class="panda-badge">✦ MAGIC</div>
+                <img src="h_panda_night.jpg" alt="Panda in magical forest" />
+                <div class="panda-card-overlay">
+                    <div class="panda-card-title">Enchanted Soul</div>
+                    <div class="panda-card-sub">Finding magic in every dark forest</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Facts carousel -->
+        <div class="panda-facts reveal">
+            <div class="facts-header">🐼 Amazing Panda Facts</div>
+            <div class="facts-carousel">
+                <div id="panda-fact">Loading a panda fact...</div>
+                <div class="fact-nav" id="fact-dots"></div>
+            </div>
+            <div style="text-align:center;margin-top:1.2rem;">
+                <button class="btn btn-gold" onclick="nextFact()" style="font-size:0.85rem;padding:0.7rem 1.8rem;">🐾
+                    Next Panda
+                    Fact</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MUSIC ══ -->
+    <section id="music">
+        <div class="section-label reveal">✦ Her Favourite Melodies ✦</div>
+        <h2 class="section-title reveal">🎵 <span class="g">Musical</span> Vibes</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc reveal">Close your eyes, let the melody take over. Handpicked tracks playing just for
+            her.
+            🖤🎶</p>
+
+        <div class="music-player-dark reveal">
+            <img src="h_mtn_stars.jpg" alt="Music vibes" class="music-cover-dark" />
+            <div class="music-info-dark">
+                <div class="music-notes">🎵 🎶 🎵 🎶 🎵</div>
+                <div class="music-title-dark">Pesamale</div>
+                <div class="music-sub-dark">Siri Xander &nbsp;·&nbsp; Sony Music South 🖤</div>
+            </div>
+            <div class="yt-dark">
+                <iframe id="music-ytframe" src="https://www.youtube.com/embed/4r9r6Fhm9I0?rel=0" title="Pesamale Song"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <a id="music-yt-link" href="https://youtu.be/4r9r6Fhm9I0" target="_blank" rel="noopener"
+                class="yt-open-btn">
+                🔗 Open in YouTube &nbsp;↗
+            </a>
+            <div class="music-playlist-dark">
+                <div class="msd-item active" onclick="playMusic('4r9r6Fhm9I0','https://youtu.be/4r9r6Fhm9I0',this)">
+                    <div class="msd-icon">🖤</div>
+                    <div>
+                        <div class="msd-name">Pesamale</div>
+                        <div class="msd-artist">Siri Xander · Sony Music</div>
+                    </div>
+                    <span class="msd-play">▶</span>
+                </div>
+                <div class="msd-item"
+                    onclick="playMusic('dvcag_sna_0','https://www.youtube.com/watch?v=dvcag_sna_0',this)">
+                    <div class="msd-icon">⛰️</div>
+                    <div>
+                        <div class="msd-name">Hosanna</div>
+                        <div class="msd-artist">A.R. Rahman · Vinnaithaandi Varuvaayaa</div>
+                    </div>
+                    <span class="msd-play">▶</span>
+                </div>
+                <div class="msd-item"
+                    onclick="playMusic('x6Q7c9RyMzk','https://www.youtube.com/watch?v=x6Q7c9RyMzk',this)">
+                    <div class="msd-icon">💃</div>
+                    <div>
+                        <div class="msd-name">Rowdy Baby</div>
+                        <div class="msd-artist">Dhanush & Dhee · Yuvan Shankar Raja</div>
+                    </div>
+                    <span class="msd-play">▶</span>
+                </div>
+                <div class="msd-item"
+                    onclick="playMusic('eYq7WapuDLU','https://www.youtube.com/watch?v=eYq7WapuDLU',this)">
+                    <div class="msd-icon">🌿</div>
+                    <div>
+                        <div class="msd-name">Enjoy Enjaami</div>
+                        <div class="msd-artist">Dhee ft. Arivu · Santhosh Narayanan</div>
+                    </div>
+                    <span class="msd-play">▶</span>
+                </div>
+                <div class="msd-item"
+                    onclick="playMusic('KUN5Uf9mObQ','https://www.youtube.com/watch?v=KUN5Uf9mObQ',this)">
+                    <div class="msd-icon">🔥</div>
+                    <div>
+                        <div class="msd-name">Arabic Kuthu</div>
+                        <div class="msd-artist">Anirudh Ravichander · Beast</div>
+                    </div>
+                    <span class="msd-play">▶</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CELEBRATION ══ -->
+    <section id="celebration">
+        <div class="section-label reveal">✦ Today's Joy ✦</div>
+        <h2 class="section-title reveal">Celebrating <span class="g">Her Happiness</span></h2>
+        <div class="gold-line"></div>
+        <p class="section-desc reveal">Every smile, every peak, every panda moment — all of it makes her who she is. 🌟
+        </p>
+
+        <div class="happiness-grid">
+            <div class="happiness-card reveal">
+                <span class="hc-icon">😊</span>
+                <span class="hc-num" data-target="1000">0</span>
+                <span class="hc-label">Smiles a Day</span>
+            </div>
+            <div class="happiness-card reveal">
+                <span class="hc-icon">⛰️</span>
+                <span class="hc-num" data-target="47">0</span>
+                <span class="hc-label">Mountains Called</span>
+            </div>
+            <div class="happiness-card reveal">
+                <span class="hc-icon">🐼</span>
+                <span class="hc-num" data-target="999">0</span>
+                <span class="hc-label">Pandas Loved</span>
+            </div>
+            <div class="happiness-card reveal">
+                <span class="hc-icon">🖤</span>
+                <span class="hc-num" data-target="100">0</span>
+                <span class="hc-label">% Black Wardrobe</span>
+            </div>
+            <div class="happiness-card reveal">
+                <span class="hc-icon">🌟</span>
+                <span class="hc-num" data-target="365">0</span>
+                <span class="hc-label">Days of Adventure</span>
+            </div>
+            <div class="happiness-card reveal">
+                <span class="hc-icon">💛</span>
+                <span class="hc-num" data-target="1">0</span>
+                <span class="hc-label">Of a Kind</span>
+            </div>
+        </div>
+
+        <div class="confetti-btn-wrap reveal">
+            <button class="btn btn-gold" onclick="celebrate()" style="font-size:1.1rem;padding:1.1rem 2.8rem;">🎉
+                Celebrate
+                Her!</button>
+        </div>
+        <div id="celebrate-msg"
+            style="margin-top:1.5rem;font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold);display:none;animation:fadeUp 0.5s ease forwards;">
+            🐼 She deserves all the happiness in the universe! ⛰️
+        </div>
+    </section>
+
+    <!-- ══ ADVENTURE ══ -->
+    <section id="adventure">
+        <div class="section-label reveal">✦ The Call of Mountains ✦</div>
+        <h2 class="section-title reveal">Born For <span class="g">Adventure</span></h2>
+        <div class="gold-line"></div>
+        <p class="section-desc reveal">She hears the mountains calling and she always answers. The summit is never too
+            far
+            for a soul like hers. ⛰️</p>
+
+        <div class="adventure-showcase">
+            <img src="h_mtn_adv.jpg" alt="Mountain adventure" class="adv-hero-img reveal" />
+            <div class="adv-grid">
+                <div class="adv-card reveal">
+                    <img src="h_mtn_stars.jpg" alt="Mountain stars" />
+                    <div class="adv-card-info">
+                        <h3>Under the Stars ✨</h3>
+                        <p>Where the Milky Way meets the peaks</p>
+                    </div>
+                </div>
+                <div class="adv-card reveal">
+                    <img src="h_panda_mtn.jpg" alt="Panda mountains" />
+                    <div class="adv-card-info">
+                        <h3>Above the Clouds 🌥️</h3>
+                        <p>Even pandas know the view is worth it</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="adv-facts">
+                <div class="adv-fact-card reveal">
+                    <span class="adv-fact-icon">🏔️</span>
+                    <div class="adv-fact-text"><strong>Summit Spirit</strong>Mountains don't intimidate her — they
+                        inspire her.
+                        Every climb is a conversation with the sky.</div>
+                </div>
+                <div class="adv-fact-card reveal">
+                    <span class="adv-fact-icon">🌌</span>
+                    <div class="adv-fact-text"><strong>Night Hiker</strong>She finds the Milky Way only after the
+                        hardest trails —
+                        and she finds it every time.</div>
+                </div>
+                <div class="adv-fact-card reveal">
+                    <span class="adv-fact-icon">🖤</span>
+                    <div class="adv-fact-text"><strong>Dark Aesthetic</strong>Black is not just a colour — it is her
+                        power, her
+                        elegance, her unstoppable force.</div>
+                </div>
+                <div class="adv-fact-card reveal">
+                    <span class="adv-fact-icon">🐼</span>
+                    <div class="adv-fact-text"><strong>Panda Heart</strong>She carries the wisdom of pandas — calm,
+                        strong,
+                        gentle, and absolutely extraordinary.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ QUOTES ══ -->
+    <section id="quotes">
+        <div class="section-label reveal">✦ Words For Her ✦</div>
+        <h2 class="section-title reveal">Words That <span class="g">Celebrate</span> Her</h2>
+        <div class="gold-line"></div>
+
+        <div class="quote-grid">
+            <div class="quote-card reveal">
+                <span class="quote-emoji">⛰️</span>
+                <p class="quote-text">"The mountains are calling and I must go."</p>
+                <div class="quote-by">— John Muir</div>
+            </div>
+            <div class="quote-card reveal">
+                <span class="quote-emoji">🐼</span>
+                <p class="quote-text">"She is rare — like a panda. Precious, gentle, and absolutely worth protecting."
+                </p>
+                <div class="quote-by">— For her 🖤</div>
+            </div>
+            <div class="quote-card reveal">
+                <span class="quote-emoji">🖤</span>
+                <p class="quote-text">"She wore black to remind herself she was everything. And she was right."</p>
+                <div class="quote-by">— The universe</div>
+            </div>
+            <div class="quote-card reveal">
+                <span class="quote-emoji">🌟</span>
+                <p class="quote-text">"Not all who wander are lost. Some are just finding themselves on mountain tops."
+                </p>
+                <div class="quote-by">— J.R.R. Tolkien</div>
+            </div>
+            <div class="quote-card reveal">
+                <span class="quote-emoji">✨</span>
+                <p class="quote-text">"Happiness is not at the top of the mountain, but in how you climb."</p>
+                <div class="quote-by">— Ancient Wisdom</div>
+            </div>
+            <div class="quote-card reveal">
+                <span class="quote-emoji">💛</span>
+                <p class="quote-text">"She turned her joy into the most beautiful adventure the world had ever seen."
+                </p>
+                <div class="quote-by">— Her best friend 🌸</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BURST ══ -->
+    <section id="burst">
+        <div class="burst-box reveal">
+            <span class="burst-icon" id="burst-icon">🎉</span>
+            <h2 class="burst-title">She Did It. She's Happy.</h2>
+            <p class="burst-sub">And the whole universe is celebrating with her right now. Press the button and feel it!
+                🌟
+            </p>
+            <button class="btn btn-gold" onclick="grandBurst()" style="font-size:1.1rem;padding:1.2rem 3rem;">🎊 GRAND
+                CELEBRATION!</button>
+            <div id="burst-panda"
+                style="margin-top:1.5rem;font-size:4rem;display:none;animation:burstBounce 0.8s ease-in-out infinite;">
+                🐼🎉🏔️✨🖤💛</div>
+        </div>
+    </section>
+
+    <!-- ══ MESSAGE ══ -->
+    <section id="message">
+        <span class="msg-icon reveal">💌</span>
+        <h2 class="section-title reveal">A Letter <span class="g">For Her</span></h2>
+        <div class="gold-line"></div>
+        <div class="msg-card reveal">
+            <p>To the panda-loving, mountain-chasing, black-wearing wonder that you are 🐼</p>
+            <p>The fact that you are happy today is the best news in the entire world. You were made for joy — fierce,
+                unapologetic, adventurous joy.</p>
+            <p>You look at mountains and see possibility where others see obstacles. You wear black like armour, like
+                elegance, like freedom. And you love pandas with a wholeness that says everything about the kind of
+                person you
+                are. 🖤⛰️</p>
+            <p>Keep climbing. Keep laughing. Keep being the rare, extraordinary, beautiful soul that you are. The peaks
+                are
+                always waiting for you, and so am I.</p>
+            <p>Today belongs to you. Every star in the night sky, every mountain trail, every panda hug — all of it is
+                yours.
+                🌟</p>
+            <div class="msg-sign">With all the love in the universe,<br />Your Best Friend 🐼✨</div>
+        </div>
+    </section>
+
+    <footer>Made with 🖤 and <span>gold</span> — for the most extraordinary person I know 🐼 · Keep climbing, keep
+        shining
+        ⛰️✨</footer>
+
+    <script>
+        (function () {
+
+            // ── STAR CANVAS ──
+            var canvas = document.getElementById('starCanvas');
+            var ctx2 = canvas.getContext('2d');
+            var stars = [];
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            for (var i = 0; i < 200; i++) {
+                stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.3, a: Math.random(), speed: Math.random() * 0.008 + 0.002 });
+            }
+            function drawStars() {
+                ctx2.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(function (s) {
+                    s.a += s.speed;
+                    var alpha = (Math.sin(s.a) + 1) / 2 * 0.7 + 0.1;
+                    ctx2.beginPath();
+                    ctx2.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx2.fillStyle = 'rgba(212,168,67,' + alpha + ')';
+                    ctx2.fill();
+                });
+                requestAnimationFrame(drawStars);
+            }
+            drawStars();
+
+            // ── FLOATING PARTICLES ──
+            var pSymbols = ['🐼', '⛰️', '🖤', '✨', '💛', '🌟', '❄️', '🏔️'];
+            function createParticle() {
+                var el = document.createElement('div');
+                el.className = 'particle';
+                el.textContent = pSymbols[Math.floor(Math.random() * pSymbols.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.fontSize = (0.9 + Math.random() * 1) + 'rem';
+                el.style.animationDuration = (10 + Math.random() * 12) + 's';
+                el.style.animationDelay = (Math.random() * 4) + 's';
+                el.style.opacity = 0;
+                document.body.appendChild(el);
+                setTimeout(function () { el.remove(); }, 25000);
+            }
+            setInterval(createParticle, 900);
+            for (var i = 0; i < 8; i++) createParticle();
+
+            // ── SCROLL REVEAL ──
+            var revs = document.querySelectorAll('.reveal');
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e, i) {
+                    if (e.isIntersecting) {
+                        setTimeout(function () { e.target.classList.add('visible'); }, i * 100);
+                        obs.unobserve(e.target);
+                        // trigger counter if happiness card
+                        var num = e.target.querySelector('[data-target]');
+                        if (num) animateCount(num);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revs.forEach(function (el) { obs.observe(el); });
+
+            // ── COUNTER ANIMATION ──
+            function animateCount(el) {
+                var target = parseInt(el.getAttribute('data-target'));
+                var current = 0;
+                var step = Math.ceil(target / 60);
+                var interval = setInterval(function () {
+                    current = Math.min(current + step, target);
+                    el.textContent = current.toLocaleString();
+                    if (current >= target) clearInterval(interval);
+                }, 25);
+            }
+
+            // ── HERO STAT COUNTERS ──
+            setTimeout(function () {
+                animCountTo('smiles-count', 1000);
+                animCountTo('peaks-count', 47);
+                animCountTo('pandas-count', 999);
+            }, 1200);
+
+            function animCountTo(id, target) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                var current = 0;
+                var step = Math.ceil(target / 50);
+                var iv = setInterval(function () {
+                    current = Math.min(current + step, target);
+                    el.textContent = current.toLocaleString();
+                    if (current >= target) clearInterval(iv);
+                }, 30);
+            }
+
+            // ── PANDA FACTS ──
+            var facts = [
+                '🐼 Giant pandas spend 10-16 hours a day eating bamboo — they eat up to 40kg a day!',
+                '🌿 A newborn panda is about the size of a stick of butter — 1/900th the size of its mother!',
+                '🖤 Pandas have a special "sixth toe" — actually an enlarged wrist bone — that works like a thumb!',
+                '❤️ Pandas can swim and even climb trees — they are secretly very athletic!',
+                '🌙 Giant pandas are generally solitary and use scent markings to communicate — mysterious, just like her!',
+                '🌍 There are only about 1,800 giant pandas left in the wild — truly rare and precious.',
+                '🔊 Pandas make 11 different sounds to communicate — chirps, honks, and bleats!',
+                '🎋 A panda\'s daily diet is 99% bamboo — and they can eat 40 different species of bamboo!',
+                '💤 Like the best adventurers, pandas know how to rest — they sleep up to 10 hours a day.',
+            ];
+            var factIdx = 0;
+            var factEl = document.getElementById('panda-fact');
+            var dotsEl = document.getElementById('fact-dots');
+
+            // create dots
+            facts.forEach(function (_, i) {
+                var d = document.createElement('div');
+                d.className = 'fact-dot' + (i === 0 ? ' active' : '');
+                d.onclick = function () { factIdx = i; showFact(); };
+                dotsEl.appendChild(d);
+            });
+
+            function showFact() {
+                factEl.style.opacity = 0;
+                setTimeout(function () {
+                    factEl.textContent = facts[factIdx];
+                    factEl.style.opacity = 1;
+                    document.querySelectorAll('.fact-dot').forEach(function (d, i) {
+                        d.classList.toggle('active', i === factIdx);
+                    });
+                }, 300);
+            }
+            factEl.style.transition = 'opacity 0.3s';
+            factEl.textContent = facts[0];
+            window.nextFact = function () { factIdx = (factIdx + 1) % facts.length; showFact(); };
+            setInterval(window.nextFact, 5000);
+
+            // ── MUSIC PLAYER ──
+            window.playMusic = function (id, ytUrl, el) {
+                document.querySelectorAll('.msd-item').forEach(function (s) { s.classList.remove('active'); });
+                el.classList.add('active');
+                document.getElementById('music-ytframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+                document.getElementById('music-yt-link').href = ytUrl;
+                var name = el.querySelector('.msd-name') ? el.querySelector('.msd-name').textContent : '';
+                var artist = el.querySelector('.msd-artist') ? el.querySelector('.msd-artist').textContent : '';
+                var titleEl = document.querySelector('.music-title-dark');
+                var subEl = document.querySelector('.music-sub-dark');
+                if (titleEl && name) titleEl.textContent = name;
+                if (subEl && artist) subEl.textContent = artist + ' · Just For Her 🖤';
+                showToast('🎵 Playing: ' + name);
+            };
+
+            // ── CELEBRATE ──
+
+            window.celebrate = function () {
+                launchConfetti();
+                var msg = document.getElementById('celebrate-msg');
+                msg.style.display = 'block';
+                showToast('🐼 SHE IS HAPPY! Celebrate! 🎉');
+            };
+
+            // ── GRAND BURST ──
+            var burstEmojis = ['🎉', '🐼', '⛰️', '🖤', '✨', '🏔️', '💛', '🌟', '🎊'];
+            var burstIdx = 0, burstIv = null;
+            window.grandBurst = function () {
+                launchConfetti();
+                launchConfetti();
+                document.getElementById('burst-panda').style.display = 'block';
+                showToast('🌟 THE WHOLE UNIVERSE IS CELEBRATING HER! 🐼⛰️');
+                if (burstIv) clearInterval(burstIv);
+                burstIv = setInterval(function () {
+                    burstIdx = (burstIdx + 1) % burstEmojis.length;
+                    document.getElementById('burst-icon').textContent = burstEmojis[burstIdx];
+                }, 300);
+            };
+
+            // ── CONFETTI ──
+            var cColors = ['#d4a843', '#f0c060', '#c8a96e', '#fff', '#888', '#1a1a1a', '#ffd700'];
+            function launchConfetti() {
+                for (var i = 0; i < 100; i++) {
+                    var p = document.createElement('div');
+                    p.className = 'confetti-p';
+                    p.style.left = Math.random() * 100 + 'vw';
+                    p.style.background = cColors[Math.floor(Math.random() * cColors.length)];
+                    p.style.width = (6 + Math.random() * 10) + 'px';
+                    p.style.height = (6 + Math.random() * 10) + 'px';
+                    p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    p.style.animationDuration = (1.8 + Math.random() * 2.5) + 's';
+                    p.style.animationDelay = (Math.random() * 1) + 's';
+                    document.body.appendChild(p);
+                    (function (el) { setTimeout(function () { el.remove(); }, 5000); })(p);
+                }
+            }
+
+            // ── TOAST ──
+            function showToast(msg) {
+                var t = document.getElementById('toast');
+                t.textContent = msg;
+                t.classList.add('show');
+                setTimeout(function () { t.classList.remove('show'); }, 3500);
+            }
+            window.showToast = showToast;
+            setTimeout(function () { showToast('🐼 Welcome to her world! She is happy! 🎉'); }, 1500);
+
+        })();
+    </script>
+</body>
+
+</html>
